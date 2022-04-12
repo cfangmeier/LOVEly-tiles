@@ -22,7 +22,7 @@ end
 
 local preallocateSB = function(self,sbx,sby)
 	local sb = lg.newSpriteBatch(self.image,PREALLOCATE_SB_SIZE)
-	sb:bind()
+	--sb:bind()
 	grid.set(self,sbx,sby,sb)
 	local tw,th       = self:getTileSize()
 	local ox,oy       = (sbx-1)*self.SBwidth*tw,(sby-1)*self.SBheight*th
@@ -45,7 +45,7 @@ local preallocateSB = function(self,sbx,sby)
 			grid.set(self.tilegrid,tox+x,toy+y,tiledata)
 		end
 	end
-	sb:unbind()
+	--sb:unbind()
 end
 
 local setQuad = function(self,t)

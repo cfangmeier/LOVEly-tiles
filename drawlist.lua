@@ -133,14 +133,13 @@ function t:callback(callback_name,...)
 end
 
 function t:draw(...)
-	local set   = self.settings
 	for i,layer in ipairs(self.layers) do
 		love.graphics.push()
 		local xscale = self.settings[layer].xtranscale
 		local yscale = self.settings[layer].ytranscale
 		local dx,dy  = xscale*self.x, yscale*self.y
 		love.graphics.translate(dx,dy)
-		if set[layer].isDrawable then
+		if self.settings[layer].isDrawable then
 			if layer.draw then layer:draw(...) end
 		end
 		love.graphics.pop()

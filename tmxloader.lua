@@ -6,9 +6,9 @@ local map       = require(path..'map')
 local isomap    = require(path..'isomap')
 local drawlist  = require(path..'drawlist')
 local xmlparser = require(path..'ext.xml')
-local unb64     = require ('mime').unb64
+--local unb64     = require ('mime').unb64
 local deflate   = require(path..'ext.deflate')
-local imageCache= setmetatable({},{__mode== 'v'})
+local imageCache= setmetatable({},{__mode= 'v'})
 
 -- ==============================================
 -- ADDONS/HACK
@@ -360,7 +360,7 @@ end
 local tmxToTable = function(filename)
 	local h        = newHandler()
 	local tmxparser= xmlparser(h)
-	local hasFile  = love.filesystem.isFile(filename)
+	local hasFile  = love.filesystem.getInfo(filename).type == 'file'
 	if not hasFile then return nil,'TMX map not found: '..filename end
 	local str      = love.filesystem.read(filename)
 	tmxparser:parse(str)
